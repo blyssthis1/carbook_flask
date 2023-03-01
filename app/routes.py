@@ -1,6 +1,6 @@
-from flask import render_template
+from flask import render_template, flash, redirect
 from app import app
-#from app.forms import RegisterForm
+from app.forms import RegisterForm, SignInForm, ContactUsForm, CarInfoForm
 
 
 @app.route('/')
@@ -17,25 +17,56 @@ def index():
 def about():
     return render_template('about.jinja', title = 'About')
 
-
-# @app.route('/signin')
-# def signin():
-#     # form = RegisterForm()
-#     return render_template('signin.jinja', title = 'Sign in')
-
-
 @app.route('/howdoesitwork')
 def howdoesitwork():
     return render_template('howdoesitwork.jinja', title = 'How does it work?')
 
-@app.route('/join')
-def join():
-    return render_template('join.jinja', title = 'Join Today')
-
-@app.route('/rentacar')
-def rentacar():
-    return render_template('rentacar.jinja', title = 'RentaCar')
+@app.route('/carinfo', methods=['GET', 'POST'])
+def carinfo():
+    form = CarInfoForm()
+    if form.validate_on_submit():
+        flash(f"Thank you! Successfully submitted! We'll get back to you soon!")
+        return redirect('/')
+    return render_template('carinfo.jinja', carinfoform=form, title = 'CarInfo')
 
 @app.route('/contactus')
 def contactus():
-    return render_template('contactus.jinja', title = 'Contact Us')
+    form = ContactUsForm()
+    if form.validate_on_submit():
+        flash(f"Thank you! Successfully submitted! We'll get back to you soon!")
+        return redirect('/')
+    return render_template('contactus.jinja', contactusform=form, title = 'Contact Us')
+
+@app.route('/signin', methods= ['GET', 'POST'])
+def signin():
+    form = SignInForm()
+    if form.validate_on_submit():
+        flash(f'{form.username} successfully signed in!')
+        return redirect('/')
+    return render_template('signin.jinja', sign_in_form=form, title = 'Sign in')
+
+@app.route('/signup', methods= ['GET', 'POST'])
+def signup():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        flash(f'Request to register {form.username} successful')
+        return redirect('/')
+    return render_template('signup.jinja', sign_up_form= form, title = 'Sign Up Today')
+
+
+# @app.route('/signup', methods= ['GET', 'POST'])
+# def signup():
+#     form = RegisterForm()
+#     if form.validate_on_submit():
+#         flash(f'Request to register {form.username} successful')
+#         return redirect('/')
+#     return render_template('signup.jinja', form=form, title = 'Signup')
+
+
+# @app.route('/signin', methods= ['GET', 'POST'])
+# def signin():
+#     form = SigninForm()
+#     if form.validate_on_submit():
+#         flash(f'{form.username} successfully signed in!')
+#         return redirect('/')
+#     return render_template('signin.jinja', sign_in_form=form, title = 'Signin')

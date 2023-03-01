@@ -3,5 +3,31 @@
 {% block content %}
 
 <h2> Contact Us </h2>
+    <form action=""method='get'>
+    {{ contactusform.hidden_tag() }}
+    <p>
+        {{ contactusform.name.label}} <br>
+        {{ contactusform.name(size=32)}}
+    </p>
+
+    <p>
+        {{ contactusform.email.label}} <br>
+        {{ contactusform.email(size=32)}}
+    </p>
+    <p>
+        {{ contactusform.phone.label}} <br>
+        {{ contactusform.phone(size=32)}}
+    </p>
+
+    <p>
+        {{ contactusform.body.label}} <br>
+        {{ contactusform.body(size=32)}}
+    </p>
+
+   <p>
+        {{ contactusform.submit(class='btn btn-primary')}}
+    </p>
+    
+    </form>
 
 {% endblock %}

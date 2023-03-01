@@ -1,0 +1,42 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+
+<h2>Car Info!</h2>
+    <form action=""method='post'>
+    {{ carinfoform.hidden_tag() }}
+        <p>
+            {{ carinfoform.make.label}} <br>
+            {{ carinfoform.make(size=32)}}
+        </p>
+
+        <p>
+            {{ carinfoform.model.label}} <br>
+            {{ carinfoform.model(size=32)}}
+        </p>
+
+        <p>
+            {{ carinfoform.year.label}} <br>
+            {{ carinfoform.year(size=32)}}
+        </p>
+
+        <p>
+            {{ carinfoform.price.label}} <br>
+            {{ carinfoform.price(size=32)}}
+        
+        </p>
+
+        <p>
+            {{ carinfoform.color.label}} <br>
+            {{ carinfoform.color(size=32)}}
+        </p>
+
+        <p>
+            {{ carinfoform.submit(class='btn btn-primary')}}
+        </p>
+        
+        </form>
+
+
+
+{% endblock %}
