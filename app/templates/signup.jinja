@@ -3,13 +3,16 @@
 {% block content %}
 
 <h2>Sign Up</h2>
-    <form action=""method='post'>
+    <form action="" method='post'>
     {{ sign_up_form.hidden_tag() }}
     <p>
         {{ sign_up_form.username.label}} <br>
         {{ sign_up_form.username(size=32)}}
     </p>
-
+    <p>
+        {{ sign_up_form.email.label}} <br>
+        {{ sign_up_form.email(size=32)}}
+    </p>
     <p>
         {{ sign_up_form.password.label}} <br>
         {{ sign_up_form.password(size=32)}}
@@ -20,16 +23,16 @@
     </p>
     <p>
         {{ sign_up_form.first_name.label}} <br>
-        {{ sign_up_form.last_name(size=32)}}
+        {{ sign_up_form.first_name(size=32)}}
     </p>
     <p>
         {{ sign_up_form.last_name.label}} <br>
         {{ sign_up_form.last_name(size=32)}}
     </p>
+    
    <p>
         {{ sign_up_form.submit(class='btn btn-primary')}}
     </p>
-    
     </form>
 
 

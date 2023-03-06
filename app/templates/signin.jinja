@@ -14,7 +14,9 @@
         {{ sign_in_form.password.label}} <br>
         {{ sign_in_form.password(size=32)}}
     </p>
-
+    <p>
+        {{ sign_in_form.remember_me() }} {{ sign_in_form.remember_me.label }}
+    </p>
    <p>
         {{ sign_in_form.submit(class='btn btn-primary')}}
     </p>
